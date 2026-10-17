@@ -3,6 +3,7 @@
     "rootNamespace": "ThreeMatches.Tests.EditMode",
     "references": [
         "ThreeMatches.Core",
+        "ThreeMatches.Strips",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],
