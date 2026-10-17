@@ -1,0 +1,20 @@
+{
+    "name": "ThreeMatches.DebugTools",
+    "rootNamespace": "ThreeMatches.DebugTools",
+    "references": [
+        "ThreeMatches.Core",
+        "ThreeMatches.Player",
+        "ThreeMatches.Strips",
+        "ThreeMatches.Memories",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
