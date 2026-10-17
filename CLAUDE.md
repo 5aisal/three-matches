@@ -8,6 +8,7 @@ Trailer work lives in TRAILER.md (ignore it unless the prompt says trailer).
 ## Golden rules
 - IMPORTANT: Do only the task in the current prompt. Don't build ahead. Don't refactor or
   restyle code the task doesn't need.
+- No voice acting, no team recordings, no scanned handwriting. Dialogue is subtitles only.
 - Never leave the project with compile errors. Stability beats features.
 - After every change, read the Unity Console through the Unity MCP and fix every error and
   warning you caused before saying you're done.

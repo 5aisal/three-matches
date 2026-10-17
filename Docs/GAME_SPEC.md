@@ -17,7 +17,7 @@ Rafi (70) lives alone in the house he rebuilt. In 1996 his daughter Noor (8) die
 in that house at 11:47 PM. The living-room wall is covered with framed photos of her: the
 Memory Wall.
 
-Tonight, in Noor's old room, he finds a small matchbox with a note in a child's handwriting:
+Tonight, in Noor's old room, he finds a small matchbox with a note in a child's handwriting (font: Gloria Hallelujah):
 "Papa, for when it gets dark. - Noor". It holds three matches.
 
 When he strikes a match at the Memory Wall, he must choose one photo to burn. The photo
@@ -34,11 +34,11 @@ memories to save her, go into the fire himself, or blow it out and keep what's l
 Small twist (shown only in Ending A): the "shadow man" Noor saw on the wall that night was
 always her father.
 
-### Script lines (subtitles; optional voice)
+### Script lines (subtitles only; no voice acting)
 | ID | When | Line |
 |---|---|---|
 | L01 | Game start (Rafi) | "Thirty years. I still hear her." |
-| L02 | Matchbox found (note, handwritten) | "Papa, for when it gets dark. - Noor" |
+| L02 | Matchbox found (note, Gloria Hallelujah font) | "Papa, for when it gets dark. - Noor" |
 | L03 | Matchbox found (Rafi) | "Three matches." |
 | L04 | Noor sees shadow, no song | "Go away! Go away!" |
 | L05 | Noor hears humming | "...Papa? Is that you?" |
@@ -110,7 +110,7 @@ Controls card shown for 6 s at game start and on pause.
 - While a match burns, Rafi stands at the wall holding it; the player controls the shadow.
 
 ## §8 Memory Wall and memories
-Four framed photos. Each has a handwritten caption (shown on hover/E).
+Four framed photos. Each has a caption in the font Caveat (Rafi's handwriting), shown on hover/E.
 | ID | Caption | What burning it gives | Rescue step |
 |---|---|---|---|
 | CLOSET | "Her hiding spot. The hallway closet. Always the closet." | The closet becomes visible/interactable for the shadow. | FIND |
@@ -118,7 +118,8 @@ Four framed photos. Each has a handwritten caption (shown on hover/E).
 | WINDOW | "The stuck window. I kept saying I'd fix it." | The shadow can force the stuck window open (hold E 2 s). | EXIT |
 | CANDLE | "Her candle. She couldn't sleep in the dark." | Shows how the fire started (a 3 s vision: curtain drifts onto the candle). Fire spreads 30% slower for the rest of the game. | none |
 - Burning a photo: edges curl, glow, ash particles, 2 s. A short sound from that memory plays
-  muffled as it burns (laugh, humming, window creak, a match). Afterwards the frame is empty
+  muffled as it burns (closet: door creak + faint child giggle; song: music-box notes; window:
+  window creak; candle: match strike). Afterwards the frame is empty
   and its caption reads "...".
 - A burned memory can never be chosen again.
 
@@ -239,7 +240,8 @@ Title: "He couldn't save her. He never forgot her."
 - Title screen, pause menu (Resume / Controls / Quit), subtitles (bottom, white, serif,
   dark backing), interaction prompts (small key icon + verb), match icons, flame timer,
   year labels, final-choice hover text, ending title card, credits.
-- Font: Cormorant Garamond (OFL) for all text. No other fonts.
+- Fonts: Cormorant Garamond (OFL) for all UI text. Memory Wall captions: Caveat. Matchbox
+  note: Gloria Hallelujah. No other fonts.
 - No HUD clutter. Nothing on screen that the player doesn't need right now.
 
 ## §19 Art direction
@@ -263,7 +265,7 @@ Title: "He couldn't save her. He never forgot her."
   is one directional light per house. Shadows on for flame lights.
 - Post-processing per strip camera: bloom, vignette, film grain (low), colour adjustments per
   time, light chromatic aberration only during cracks.
-- Human touches: captions and the matchbox note are real handwriting scanned from paper.
+- Handwriting fonts for captions and the note.
 
 ## §20 Audio
 Music (Scott Buckley, CC-BY 4.0; credit format in §25):
@@ -274,19 +276,19 @@ Music (Scott Buckley, CC-BY 4.0; credit format in §25):
 | Final choice | "Shadows and Dust" |
 | Endings A and B | "With These Hands" |
 | Ending C + credits | "At The End Of All Things" |
-Crossfade 2 s between tracks. Music ducks -8 dB under voice lines.
-SFX:
+Crossfade 2 s between tracks.
+SFX source priority: Freesound CC0 > Sonniss > Kenney > synthesized.
 | Sound | Source (priority order) |
 |---|---|
-| Match strike, match burn, match blown out | Team recording > Sonniss > Freesound CC0 |
-| Photo burning + muffled memory sound | Team recording (laugh, humming) layered over paper-burn SFX |
-| Humming Noor's song (H) | Team recording (original 6-note melody) |
+| Match strike, match burn, match blown out | Freesound CC0 > Sonniss > Kenney > synthesized |
+| Photo burning + muffled memory sound | Paper-burn SFX layered with the memory sound: closet = closet-door creak + faint child giggle; song = music-box notes; window = window creak; candle = match strike |
+| Noor's song (H) | Synthesized music-box lullaby: 6 original notes, looped, soft low-pass so it feels like humming |
 | Fire crackle loops (3 intensities), house fire roar | Sonniss > Freesound CC0 |
 | Wood creaks, window forced open, cold air | Sonniss > Freesound CC0 |
 | Room tones (past warm, present cold, future soft) | Sonniss > Freesound CC0 > synthesized |
 | Bass hit, crack, risers, heartbeat | Synthesized (or Sonniss) |
 | UI hover/click | Kenney Interface Sounds (CC0) |
-| Voice lines L04, L05, L08-L11 | Team recordings (optional; subtitles always shown) |
+| Voice lines | None. Subtitles only. |
 
 ## §21 Game feel
 - Every action answers back with sound + visual: interact, strike, burn, crack, step done.
@@ -313,14 +315,14 @@ for gameplay, NavMesh, custom rigging or hand-made animation clips, procedural l
 localization, WebGL build, Unity Asset Store assets.
 
 ## §24 Motion bible (every animation, with timing)
-UI (LitMotion; Cormorant Garamond everywhere):
+UI (LitMotion; Cormorant Garamond for UI, Caveat for captions, Gloria Hallelujah for the note):
 | Element | Motion |
 |---|---|
 | Title screen | Black. Match strikes: 3-frame spark burst, flame grows 0.4 s (ease-out-back), light blooms. Title fades in 1.2 s with 8 px upward drift (ease-out-cubic). "Press any key" alpha breathes 0.4-0.9 every 2.4 s (sine). |
 | Controls card | In: 24 px slide up + fade, 0.4 s ease-out. Out: 0.3 s fade. |
 | Interaction prompt | In: scale 0.8 to 1 + fade, 0.18 s ease-out-back. Out: 0.12 s. |
 | Subtitles | Fade + 6 px rise, 0.25 s. Hold 1.5 s minimum. Out 0.3 s. |
-| Handwritten caption | Fades in with a 0.6 s left-to-right reveal mask (like ink appearing). |
+| Handwritten caption | Caption text reveals left to right with a 0.6 s mask, like ink appearing. |
 | Match icons | A used match burns down 0.5 s, then turns ash-grey. |
 | Flame timer | Shader flicker; last 8 s: stronger flicker + vignette pulses with the heartbeat. |
 | Year labels | Appear digit by digit over 0.3 s after each crack. |
@@ -366,9 +368,9 @@ Environment and VFX:
 | Sonniss GDC bundle sounds (only the files used) | Assets/_Project/Audio/SFX/Sonniss/ | Royalty-free, no attribution |
 | Freesound CC0 sounds | Assets/_Project/Audio/SFX/Freesound/ | CC0 |
 | Kenney Interface Sounds | Assets/_Project/Audio/SFX/Kenney/ | CC0 |
-| Team recordings | Assets/_Project/Audio/Team/ | Team-made |
-| Handwriting scans | Assets/_Project/Art/Handwriting/ | Team-made |
 | Cormorant Garamond | Assets/_Project/Fonts/ | SIL OFL |
+| Caveat (open-source font) | Assets/_Project/Fonts/ | SIL OFL |
+| Gloria Hallelujah (open-source font) | Assets/_Project/Fonts/ | SIL OFL |
 | LitMotion (tweening) | Package (git URL) | MIT |
 Music credit format (Credits screen and README):
 '[Title]' by Scott Buckley - released under CC-BY 4.0. www.scottbuckley.com.au
