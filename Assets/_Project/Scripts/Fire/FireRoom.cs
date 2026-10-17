@@ -48,6 +48,7 @@ namespace ThreeMatches.Fire
         public int TargetLevel { get; private set; }
         public float BlendedLevel => blended;
         public bool IsFrozen => frozen;
+        public Light FireLight => fireLight;
 
         private void Awake()
         {
