@@ -17,6 +17,19 @@ namespace ThreeMatches.Tests.EditMode
         }
 
         [Test]
+        public void CompleteStep_RaisesStepCompletedOnce()
+        {
+            var s = new RescueState();
+            s.Burn(MemoryId.Closet);
+            int raised = 0;
+            s.StepCompleted += _ => raised++;
+            s.CompleteStep(RescueStep.Find);
+            s.CompleteStep(RescueStep.Find);
+            s.CompleteStep(RescueStep.Calm); // memory not burned: refused, no event
+            Assert.AreEqual(1, raised);
+        }
+
+        [Test]
         public void Burn_PreservesOrder()
         {
             var s = new RescueState();

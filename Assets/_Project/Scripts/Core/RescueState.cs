@@ -27,6 +27,12 @@ namespace ThreeMatches.Core
         readonly List<MemoryId> _burned = new List<MemoryId>(MemoryRules.MemoryCount);
         readonly bool[] _steps = new bool[MemoryRules.StepCount];
 
+        /// <summary>Raised once when a step becomes completed through <see cref="CompleteStep"/>.</summary>
+        public event System.Action<RescueStep> StepCompleted;
+
+        /// <summary>Raised after <see cref="Restore"/> replaced the whole state (debug jumps, "Choose again").</summary>
+        public event System.Action Restored;
+
         public IReadOnlyList<MemoryId> BurnedMemories => _burned;
         public float PastTime { get; private set; }
         public int MatchesUsed { get; private set; }
@@ -61,6 +67,7 @@ namespace ThreeMatches.Core
         {
             if (_steps[(int)step] || !IsBurned(MemoryRules.MemoryFor(step))) return false;
             _steps[(int)step] = true;
+            StepCompleted?.Invoke(step);
             return true;
         }
 
@@ -84,6 +91,7 @@ namespace ThreeMatches.Core
             PastTime = s.PastTime;
             MatchesUsed = s.MatchesUsed;
             NoorState = s.NoorState;
+            Restored?.Invoke();
         }
     }
 }

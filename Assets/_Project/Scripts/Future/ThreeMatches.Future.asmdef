@@ -1,0 +1,20 @@
+{
+    "name": "ThreeMatches.Future",
+    "rootNamespace": "ThreeMatches.Future",
+    "references": [
+        "ThreeMatches.Core",
+        "ThreeMatches.Memories",
+        "ThreeMatches.Strips",
+        "LitMotion",
+        "UnityEngine.UI"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
