@@ -44,3 +44,4 @@ Trailer work lives in TRAILER.md (ignore it unless the prompt says trailer).
 ## Git
 - Commit at the end of every task that passes: "feat(<system>): <summary>" or
   "fix(<system>): <summary>". Never commit with compile errors or failing tests.
+- After every commit, run git push.
