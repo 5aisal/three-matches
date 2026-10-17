@@ -1,0 +1,50 @@
+# Unity generated
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+
+# Builds
+/[Bb]uilds/
+
+# IDE / generated project files
+*.csproj
+*.sln
+*.slnx
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+.vs/
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Unity auto-generated
+sysinfo.txt
+crashlytics-build.properties
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# Trailer: keep only credits and scripts
+/Trailer/*
+!/Trailer/CREDITS.txt
+!/Trailer/scripts/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# NOTE: *.meta files are intentionally NOT ignored.
