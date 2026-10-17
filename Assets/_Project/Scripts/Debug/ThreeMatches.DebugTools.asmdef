@@ -6,6 +6,7 @@
         "ThreeMatches.Player",
         "ThreeMatches.Strips",
         "ThreeMatches.Memories",
+        "ThreeMatches.Fire",
         "Unity.InputSystem"
     ],
     "includePlatforms": [],

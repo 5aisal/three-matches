@@ -1,0 +1,19 @@
+{
+    "name": "ThreeMatches.Fire",
+    "rootNamespace": "ThreeMatches.Fire",
+    "references": [
+        "ThreeMatches.Core",
+        "ThreeMatches.Memories",
+        "ThreeMatches.Strips",
+        "LitMotion"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
