@@ -12,11 +12,14 @@ Every external asset used in Three Matches. Folders and licences follow GAME_SPE
 ## Art
 | Asset | Author | Licence | Link |
 |---|---|---|---|
-| Furniture Kit, Building Kit | Kenney | CC0 | https://kenney.nl |
+| Furniture Kit (house furniture, doors, window frames: doorway, doorwayFront, doorwayOpen, bookcaseClosedDoors, bookcaseClosedWide, cabinetTelevision, cabinetBedDrawer, bedSingle, loungeChair, kitchen units, tables, chairs, lamps, plants, rugs, pillow, books and others) | Kenney | CC0 | https://kenney.nl/assets/furniture-kit |
+| Building Kit (imported, no model used in the house yet) | Kenney | CC0 | https://kenney.nl/assets/building-kit |
 | Particle Pack | Kenney | CC0 | https://kenney.nl |
 | Universal Base Characters (Standard) | Quaternius | CC0 | https://quaternius.com |
 | Universal Animation Library (Standard) | Quaternius | CC0 | https://quaternius.com |
-| laminate_floor_02, plastered_wall_05, Concrete034 textures (1K) | Poly Haven / ambientCG | CC0 | https://polyhaven.com , https://ambientcg.com |
+| plastered_wall_05 texture set (1K): house walls | Poly Haven | CC0 | https://polyhaven.com/a/plastered_wall_05 |
+| laminate_floor_02 texture set (1K): house floors and stairs | Poly Haven | CC0 | https://polyhaven.com/a/laminate_floor_02 |
+| Concrete034 texture set (1K): roof slabs | ambientCG | CC0 | https://ambientcg.com/view?id=Concrete034 |
 | VFX flipbooks | Unity Labs | CC0 | TODO: add link |
 | Fire flipbooks | CGHEVEN | CC0 | TODO: add link |
 
