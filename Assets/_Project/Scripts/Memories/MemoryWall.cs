@@ -45,6 +45,9 @@ namespace ThreeMatches.Memories
 
         public bool IsChoosing => choosing;
 
+        /// <summary>The frame under the mouse this frame, or null (Rafi glances toward it).</summary>
+        public MemoryFrame HoveredFrame => hovered;
+
         /// <summary>True when Rafi stands close enough to the wall to strike a match.</summary>
         public bool InReach(Vector3 position) => strikePrompt.InReach(position.x, position.y);
 

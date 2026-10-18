@@ -18,7 +18,6 @@ namespace ThreeMatches.Shadow
         [SerializeField] private GameInput input;
         [SerializeField] private MatchController matches;
         [SerializeField] private PastFireController fire;
-        [SerializeField] private SpriteRenderer[] visuals;
 
         [Header("Walls (left to right)")]
         [SerializeField] private Transform[] wallQuads;
@@ -41,6 +40,7 @@ namespace ThreeMatches.Shadow
         private bool active;
 
         public bool IsActive => active;
+        public bool FacingRight => mover.FacingRight;
         public Vector3 BodyCenter => transform.position + Vector3.up * bodyCenterHeight;
 
         /// <summary>Raised when control passes to the shadow (true) or back to Rafi (false).</summary>
@@ -51,7 +51,6 @@ namespace ThreeMatches.Shadow
             BuildMover();
             levels = new int[roomOrder.Length];
             roomsByOrder = new FireRoom[roomOrder.Length];
-            SetVisible(false);
             Apply();
         }
 
@@ -73,7 +72,6 @@ namespace ThreeMatches.Shadow
             if (open != active)
             {
                 active = open;
-                SetVisible(open);
                 ActiveChanged?.Invoke(open);
             }
 
@@ -122,12 +120,6 @@ namespace ThreeMatches.Shadow
         private void Apply()
         {
             transform.position = new Vector3(mover.X, mover.Y, depth);
-            for (int i = 0; i < visuals.Length; i++) visuals[i].flipX = !mover.FacingRight;
-        }
-
-        private void SetVisible(bool value)
-        {
-            for (int i = 0; i < visuals.Length; i++) visuals[i].enabled = value;
         }
     }
 }

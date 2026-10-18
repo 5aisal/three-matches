@@ -4,22 +4,28 @@ using UnityEngine;
 namespace ThreeMatches.Shadow
 {
     /// <summary>
-    /// Placeholder look of the shadow: a black Rafi silhouette with a softer, larger halo copy behind it.
-    /// Scale and alpha flicker with the nearest burning room's light (GAME_SPEC §11).
+    /// The look of Shadow-Rafi (GAME_SPEC §11, §19): the animated Rafi rig drawn as a pure black silhouette,
+    /// flattened against the wall, shown only while the shadow is in play. Scale and alpha flicker with the
+    /// nearest burning room's light. The silhouette shader draws each pixel once, so overlapping limbs do not
+    /// double-darken.
     /// </summary>
     public sealed class ShadowVisual : MonoBehaviour
     {
+        private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
+        private static readonly int FlattenId = Shader.PropertyToID("_Flatten");
+        private static readonly int PlaneZId = Shader.PropertyToID("_FlattenPlaneZ");
+
         [SerializeField] private PastFireController fire;
         [SerializeField] private ShadowController shadow;
+        [Tooltip("Takes the flicker scale (uniform) and marks the wall plane the silhouette is flattened onto.")]
         [SerializeField] private Transform body;
-        [SerializeField] private SpriteRenderer main;
-        [SerializeField] private SpriteRenderer halo;
+        [SerializeField] private Renderer[] renderers;
 
         [Header("Look")]
+        [Tooltip("Scale on the wall's normal axis, applied by the silhouette shader (a transform scale would break the Humanoid rig).")]
+        [SerializeField, Range(0.001f, 1f)] private float wallScale = 0.02f;
         [SerializeField] private Color tint = Color.black;
-        [SerializeField, Range(0f, 1f)] private float baseAlpha = 0.92f;
-        [SerializeField, Range(0f, 1f)] private float haloAlpha = 0.35f;
-        [SerializeField, Min(1f)] private float haloScale = 1.12f;
+        [SerializeField, Range(0f, 1f)] private float baseAlpha = 0.85f;
 
         [Header("Flicker")]
         [Tooltip("Light intensity that gives the full flicker.")]
@@ -30,13 +36,18 @@ namespace ThreeMatches.Shadow
         [SerializeField, Range(0f, 1f)] private float alphaDip = 0.35f;
         [SerializeField, Min(0.1f)] private float flickerSpeed = 9f;
 
+        private MaterialPropertyBlock block;
         private float clock;
 
         private void Awake()
         {
-            halo.transform.localScale = Vector3.one * haloScale;
+            block = new MaterialPropertyBlock();
+            SetVisible(false);
             ApplyLook(0f, 0f);
         }
+
+        private void OnEnable() => shadow.ActiveChanged += SetVisible;
+        private void OnDisable() => shadow.ActiveChanged -= SetVisible;
 
         private void Update()
         {
@@ -46,6 +57,11 @@ namespace ThreeMatches.Shadow
             float strength = NearestFireStrength();
             float noise = Mathf.PerlinNoise(clock * flickerSpeed, 0.37f);
             ApplyLook(strength, noise);
+        }
+
+        private void SetVisible(bool value)
+        {
+            for (int i = 0; i < renderers.Length; i++) renderers[i].enabled = value;
         }
 
         private float NearestFireStrength()
@@ -72,13 +88,10 @@ namespace ThreeMatches.Shadow
             body.localScale = Vector3.one * (1f + wobble * scaleAmount * strength);
 
             float dip = 1f - alphaDip * strength * noise;
-            SetAlpha(main, baseAlpha * dip);
-            SetAlpha(halo, haloAlpha * dip);
-        }
-
-        private void SetAlpha(SpriteRenderer r, float alpha)
-        {
-            r.color = new Color(tint.r, tint.g, tint.b, alpha);
+            block.SetColor(BaseColorId, new Color(tint.r, tint.g, tint.b, baseAlpha * dip));
+            block.SetFloat(FlattenId, wallScale);
+            block.SetFloat(PlaneZId, body.position.z);
+            for (int i = 0; i < renderers.Length; i++) renderers[i].SetPropertyBlock(block);
         }
     }
 }

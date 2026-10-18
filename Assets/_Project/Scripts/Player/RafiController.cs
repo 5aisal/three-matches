@@ -6,13 +6,13 @@ namespace ThreeMatches.Player
     /// <summary>
     /// Drives present-day Rafi along the floors and stairs of a house. Rules live in
     /// <see cref="WalkerModel"/>; this component only reads input and places the transform.
-    /// Layout numbers are house-local (relative to <c>houseOrigin</c>).
+    /// Layout numbers are house-local (relative to <c>houseOrigin</c>). The animated body is a separate
+    /// component (RafiRig) that only reads this controller.
     /// </summary>
     public sealed class RafiController : MonoBehaviour
     {
         [SerializeField] private GameInput input;
         [SerializeField] private Transform houseOrigin;
-        [SerializeField] private SpriteRenderer visual;
         [SerializeField, Min(0f)] private float walkSpeed = 2f;
         [SerializeField] private float startX = 0.6f;
         [Tooltip("Depth offset from the house origin; negative is toward the camera.")]
@@ -28,6 +28,7 @@ namespace ThreeMatches.Player
         private WalkerModel model;
 
         public WalkerMode Mode => model.Mode;
+        public bool FacingRight => model.FacingRight;
         public bool InputLocked { get; set; }
 
         private void Awake()
@@ -55,7 +56,6 @@ namespace ThreeMatches.Player
         {
             Vector3 origin = houseOrigin.position;
             transform.position = new Vector3(origin.x + model.X, origin.y + model.Y, origin.z + walkDepth);
-            visual.flipX = !model.FacingRight;
         }
     }
 }

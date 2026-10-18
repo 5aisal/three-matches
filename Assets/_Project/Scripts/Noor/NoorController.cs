@@ -8,8 +8,8 @@ namespace ThreeMatches.Noor
 {
     /// <summary>
     /// Drives Noor on the upper floor of House_1996 from the shadow's position and humming (GAME_SPEC §12).
-    /// The rules live in <see cref="NoorModel"/>; this component feeds it, shows the placeholder sprite,
-    /// plays the subtitles and keeps <see cref="RescueState"/> up to date.
+    /// The rules live in <see cref="NoorModel"/>; this component feeds it, plays the subtitles and keeps
+    /// <see cref="RescueState"/> up to date. Her animated body is a separate component (NoorRig).
     /// </summary>
     public sealed class NoorController : MonoBehaviour
     {
@@ -21,7 +21,6 @@ namespace ThreeMatches.Noor
         [SerializeField] private SubtitleSystem subtitles;
         [SerializeField] private Transform closet;
         [SerializeField] private Transform window;
-        [SerializeField] private SpriteRenderer visual;
 
         [Header("Floor line")]
         [Tooltip("World y of her feet (the upper floor).")]
@@ -56,6 +55,7 @@ namespace ThreeMatches.Noor
         private NoorState written;
 
         public NoorState State => model.State;
+        public bool FacingRight => model.FacingRight;
 
         private void Awake()
         {
@@ -151,9 +151,7 @@ namespace ThreeMatches.Noor
         private void Apply()
         {
             if (model.State != NoorState.Hidden) lastX = model.X;
-            visual.enabled = model.State != NoorState.Hidden;
             transform.position = new Vector3(model.X, floorY, depth);
-            visual.flipX = !model.FacingRight;
         }
     }
 }
