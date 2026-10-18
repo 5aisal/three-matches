@@ -26,6 +26,16 @@ namespace ThreeMatches.Tests.EditMode
         }
 
         [Test]
+        public void CharRisesFromZeroToOneWithFireLevel()
+        {
+            Assert.AreEqual(0f, FireBlend.CharFromLevel(0f));
+            Assert.AreEqual(0.5f, FireBlend.CharFromLevel(1.5f), 1e-4f);
+            Assert.AreEqual(1f, FireBlend.CharFromLevel(FireBlend.MaxLevel));
+            Assert.AreEqual(0f, FireBlend.CharFromLevel(-2f));
+            Assert.AreEqual(1f, FireBlend.CharFromLevel(9f));
+        }
+
+        [Test]
         public void SampleInterpolatesBetweenLevels()
         {
             var table = new[] { 0f, 10f, 20f, 40f };

@@ -17,6 +17,14 @@ namespace ThreeMatches.Core
             return current + Math.Sign(diff) * maxMove;
         }
 
+        /// <summary>Burn damage (0-1) for a blended fire level: 0 at level 0, 1 at <see cref="MaxLevel"/>.</summary>
+        public static float CharFromLevel(float level)
+        {
+            if (level <= 0f) return 0f;
+            if (level >= MaxLevel) return 1f;
+            return level / MaxLevel;
+        }
+
         /// <summary>Linear interpolation across a per-level table (index 0..MaxLevel).</summary>
         public static float Sample(float[] perLevel, float level)
         {
