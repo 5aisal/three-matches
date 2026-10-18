@@ -18,6 +18,11 @@ namespace ThreeMatches.Lighting
         private bool finalLit;
         private float clock;
 
+        /// <summary>Raised when the match flame turns on (true) or goes out (false).</summary>
+        public event System.Action<bool> LitChanged;
+
+        public bool IsLit => flame.enabled;
+
         private void Awake()
         {
             flame.enabled = false;
@@ -49,7 +54,12 @@ namespace ThreeMatches.Lighting
         {
             var session = match.Session;
             bool lit = session.IsActive || finalLit;
-            if (flame.enabled != lit) flame.enabled = lit;
+            if (flame.enabled != lit)
+            {
+                flame.enabled = lit;
+                LitChanged?.Invoke(lit);
+            }
+
             if (!lit) return;
 
             clock += Time.deltaTime;

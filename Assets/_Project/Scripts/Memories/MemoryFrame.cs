@@ -13,6 +13,7 @@ namespace ThreeMatches.Memories
     public sealed class MemoryFrame : MonoBehaviour
     {
         private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
+        private static readonly int BurnId = Shader.PropertyToID("_Burn");
 
         [SerializeField] private MemoryId memory;
         [SerializeField, TextArea] private string caption = "";
@@ -126,7 +127,8 @@ namespace ThreeMatches.Memories
         private void ApplyTint(float burnT)
         {
             photoRenderer.GetPropertyBlock(block);
-            block.SetColor(BaseColorId, Color.Lerp(photoColor, Color.black, burnT));
+            block.SetColor(BaseColorId, photoColor);
+            block.SetFloat(BurnId, burnT);
             photoRenderer.SetPropertyBlock(block);
         }
 
