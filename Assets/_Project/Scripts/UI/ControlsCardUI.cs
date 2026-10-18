@@ -23,8 +23,10 @@ namespace ThreeMatches.UI
             fade.SnapTo(0f);
         }
 
-        private void Start()
+        /// <summary>Shows the card for a few seconds. Called by the game flow once the title is dismissed.</summary>
+        public void ShowIntro()
         {
+            if (autoHide != null) StopCoroutine(autoHide);
             Open();
             autoHide = StartCoroutine(CloseAfter(startDuration));
         }

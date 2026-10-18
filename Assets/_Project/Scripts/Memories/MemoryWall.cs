@@ -80,6 +80,17 @@ namespace ThreeMatches.Memories
             ShowCaption(wanted);
         }
 
+        /// <summary>The unburned caption of a memory (used by the "He kept one thing" ending variant).</summary>
+        public string CaptionOf(MemoryId memory)
+        {
+            MemoryFrame f = Find(memory);
+            return f != null ? f.OriginalCaption : "";
+        }
+
+        public void SetStrikeVerb(string verb) => strikePrompt.SetVerb(verb);
+
+        public string StrikeVerb => strikePrompt.Verb;
+
         /// <summary>Updates the strike prompt and which frames can be read with E (after any state change).</summary>
         public void Refresh(bool canStrike)
         {

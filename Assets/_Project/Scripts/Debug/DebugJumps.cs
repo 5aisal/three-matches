@@ -1,4 +1,5 @@
 using ThreeMatches.Core;
+using ThreeMatches.Flow;
 using ThreeMatches.Memories;
 using ThreeMatches.Player;
 using ThreeMatches.Strips;
@@ -18,6 +19,7 @@ namespace ThreeMatches.DebugTools
         [SerializeField] private MatchController matches;
         [SerializeField] private StripLayoutController layout;
         [SerializeField] private GameFlagsService flags;
+        [SerializeField] private GameFlowDirector flow;
 
         private void Awake()
         {
@@ -28,7 +30,7 @@ namespace ThreeMatches.DebugTools
         private void Update()
         {
             Keyboard kb = Keyboard.current;
-            if (kb == null || layout.IsBusy) return;
+            if (kb == null || layout.IsBusy || flow.IsBusy) return;
 
             if (kb.f2Key.wasPressedThisFrame) JumpToMatch1();
             else if (kb.f3Key.wasPressedThisFrame) JumpToWindow2();

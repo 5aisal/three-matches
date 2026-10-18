@@ -46,6 +46,7 @@ namespace ThreeMatches.Memories
         public MemoryId Memory => memory;
         public Interactable Interactable => interactable;
         public bool IsBurned { get; private set; }
+        public string OriginalCaption => caption;
         public string CurrentCaption => IsBurned ? burnedCaption : caption;
 
         private void Awake()

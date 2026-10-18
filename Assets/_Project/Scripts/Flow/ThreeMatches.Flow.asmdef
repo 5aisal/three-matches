@@ -1,0 +1,24 @@
+{
+    "name": "ThreeMatches.Flow",
+    "rootNamespace": "ThreeMatches.Flow",
+    "references": [
+        "ThreeMatches.Core",
+        "ThreeMatches.Player",
+        "ThreeMatches.Strips",
+        "ThreeMatches.Memories",
+        "ThreeMatches.UI",
+        "LitMotion",
+        "Unity.TextMeshPro",
+        "UnityEngine.UI",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

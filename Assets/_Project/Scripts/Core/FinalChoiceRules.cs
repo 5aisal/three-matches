@@ -5,6 +5,29 @@ namespace ThreeMatches.Core
     /// <summary>Cost, availability and outcomes of the final choice (GAME_SPEC §15, §16).</summary>
     public static class FinalChoiceRules
     {
+        public const string PastHover = "Go yourself. You won't come back.";
+        public const string FutureHover = "Blow it out. Keep what's left.";
+        public const string PresentUnavailable = "Not enough left to give.";
+
+        /// <summary>Hover text of the Present strip: the real cost N, or the greyed-out text.</summary>
+        public static string PresentHover(RescueState state)
+        {
+            if (!IsPresentAvailable(state)) return PresentUnavailable;
+            int n = Cost(state);
+            if (n == 0) return "Save her. There is nothing left to burn.";
+            return n == 1 ? "Burn 1 more memory to save her." : "Burn " + n + " more memories to save her.";
+        }
+
+        public static string HoverText(RescueState state, EndingId ending)
+        {
+            switch (ending)
+            {
+                case EndingId.WalkIntoFire: return PastHover;
+                case EndingId.SaveHerForgetHer: return PresentHover(state);
+                default: return FutureHover;
+            }
+        }
+
         public static List<RescueStep> MissingSteps(RescueState state)
         {
             var missing = new List<RescueStep>(MemoryRules.StepCount);

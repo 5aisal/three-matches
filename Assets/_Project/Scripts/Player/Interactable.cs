@@ -28,6 +28,7 @@ namespace ThreeMatches.Player
         public event Action<Interactable> Interacted;
 
         public string Verb => verb;
+        public void SetVerb(string value) => verb = value;
         public string KeyLabelOverride => keyLabelOverride;
         public bool PromptOnly => promptOnly;
         public bool Available => available;

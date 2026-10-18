@@ -101,6 +101,22 @@ namespace ThreeMatches.Strips
             StartResize();
         }
 
+        /// <summary>Final choice (GAME_SPEC §15): the three strips resize to equal thirds.</summary>
+        public void ShowEqualThirds()
+        {
+            if (crackPlaying) return;
+            StripLayoutCalculator.Compute(3, ActiveStrip, 1f / 3f, 1f / 3f, to);
+            StartResize();
+        }
+
+        /// <summary>Resizes back to the normal layout of the current stage.</summary>
+        public void RestoreLayout()
+        {
+            if (crackPlaying) return;
+            StripLayoutCalculator.Compute(Stage, ActiveStrip, twoStripActiveFraction, threeStripActiveFraction, to);
+            StartResize();
+        }
+
         public void CycleActiveStrip() => SetActiveStrip(StripLayoutCalculator.NextActive(Stage, ActiveStrip));
 
         private void HandleCrackFinished()
